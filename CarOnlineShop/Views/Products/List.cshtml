@@ -1,0 +1,30 @@
+﻿@model CarsListViewModel
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var car in Model.Cars)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <div style="width:300px; height:100px;text-align:center;padding-top:20px;">
+                <img src="@car.ImageThumbnailUrl" alt="" />
+            </div>
+            <div class="caption" style="height:145px;">
+                <h3 class="pull-right">@car.Price.ToString("c")</h3>
+                <h3>
+                    <a>@car.Name</a>
+                </h3>
+                <p>@car.Description</p>
+            </div>
+            <div class="addToCart text-right">
+                <p class="button ">
+                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-Id="@car.ProductId">
+                        Add to cart
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+}
